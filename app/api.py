@@ -14,7 +14,7 @@ model = joblib.load(MODEL_PATH)
 
 origins = [
     "http://localhost:8000",         # para testes locais (ajuste se usar outra porta)
-    "https://ai-impact-on-job-market-2024-2030-front.onrender.com/" # troque pela URL do front-end no Render
+    "https://ai-impact-on-job-market-2024-2030-front.onrender.com" # troque pela URL do front-end no Render
 ]
 
 app.add_middleware(
