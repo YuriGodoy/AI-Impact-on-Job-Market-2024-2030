@@ -1,6 +1,6 @@
 // Troque pelo endpoint real do Render, ex.:
 // const API_URL = "https://ai-automation-risk-api.onrender.com/predict";
-const API_URL = "https://ai-impact-on-job-market-2024-2030-api.onrender.com//predict";
+const API_URL = "https://ai-impact-on-job-market-2024-2030-api.onrender.com/predict";
 
 const form = document.getElementById("risk-form");
 const resultBox = document.getElementById("result");
