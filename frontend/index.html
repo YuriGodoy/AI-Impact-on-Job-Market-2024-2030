@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Previsor de Risco de Automação</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>Previsor de Risco de Automação</h1>
+      <p class="subtitle">
+        Estime o risco de uma ocupação ser automatizada com base em suas características.
+      </p>
+    </header>
+
+    <main class="main">
+      <section class="card">
+        <h2>Configurações da ocupação</h2>
+
+        <form id="risk-form" class="form">
+          <div class="grid">
+
+            <!-- Industry -->
+            <div class="field">
+              <label for="industry">Indústria</label>
+              <select id="industry" required>
+                <option value="" disabled selected>Selecione...</option>
+                <option value="TI">TI</option>
+                <option value="Manufatura">Manufatura</option>
+                <option value="Finanças">Finanças</option>
+                <option value="Saúde">Saúde</option>
+                <option value="Educação">Educação</option>
+                <option value="Entretenimento">Entretenimento</option>
+                <option value="Varejo">Varejo</option>
+                <option value="Transporte">Transporte</option>
+              </select>
+            </div>
+
+            <!-- Job Status -->
+            <div class="field">
+              <label for="jobStatus">Situação da ocupação</label>
+              <select id="jobStatus" required>
+                <option value="" disabled selected>Selecione...</option>
+                <option value="Em crescimento">Em crescimento</option>
+                <option value="Em declínio">Em declínio</option>
+              </select>
+            </div>
+
+            <!-- AI Impact Level -->
+            <div class="field">
+              <label for="aiImpact">Nível de impacto da IA</label>
+              <select id="aiImpact" required>
+                <option value="" disabled selected>Selecione...</option>
+                <option value="Baixo">Baixo</option>
+                <option value="Moderado">Moderado</option>
+                <option value="Alto">Alto</option>
+              </select>
+            </div>
+
+            <!-- Required Education -->
+            <div class="field">
+              <label for="education">Escolaridade mínima</label>
+              <select id="education" required>
+                <option value="" disabled selected>Selecione...</option>
+                <option value="Ensino médio">Ensino médio</option>
+                <option value="Tecnólogo">Tecnólogo</option>
+                <option value="Graduação">Graduação</option>
+                <option value="Mestrado">Mestrado</option>
+                <option value="Doutorado">Doutorado</option>
+              </select>
+            </div>
+
+            <!-- Median Salary -->
+            <div class="field">
+              <label for="salary">Salário mediano anual (USD)</label>
+              <input id="salary" type="number" min="0" step="1000" required placeholder="Ex.: 60000" />
+            </div>
+
+            <!-- Experience -->
+            <div class="field">
+              <label for="experience">Experiência requerida (anos)</label>
+              <input id="experience" type="number" min="0" step="1" required placeholder="Ex.: 3" />
+            </div>
+
+            <!-- Job Openings 2024 -->
+            <div class="field">
+              <label for="openings2024">Vagas em 2024</label>
+              <input id="openings2024" type="number" min="0" step="1" required placeholder="Ex.: 1500" />
+            </div>
+
+            <!-- Projected Openings 2030 -->
+            <div class="field">
+              <label for="openings2030">Vagas projetadas para 2030</label>
+              <input id="openings2030" type="number" min="0" step="1" required placeholder="Ex.: 2000" />
+            </div>
+
+            <!-- Remote Work Ratio -->
+            <div class="field">
+              <label for="remoteRatio">Trabalho remoto possível (%)</label>
+              <input id="remoteRatio" type="number" min="0" max="100" step="1" required placeholder="Ex.: 80" />
+            </div>
+
+            <!-- Gender Diversity -->
+            <div class="field">
+              <label for="genderDiversity">Diversidade de gênero (%)</label>
+              <input id="genderDiversity" type="number" min="0" max="100" step="1" required placeholder="Ex.: 45" />
+            </div>
+
+          </div>
+
+          <button type="submit" id="submit-btn">
+            Calcular risco de automação
+          </button>
+        </form>
+
+        <div id="result" class="result hidden">
+          <h3>Resultado</h3>
+          <p>
+            Risco estimado de automação:
+            <span id="risk-value"></span>%
+          </p>
+          <p class="hint">
+            Esta é uma estimativa com base no modelo treinado a partir do conjunto de dados de ocupações.
+          </p>
+        </div>
+
+        <div id="error" class="error hidden"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Global Solution • Impacto da IA no mercado de trabalho</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
