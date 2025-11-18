@@ -9,21 +9,20 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Automation Risk Predictor")
 
+# 🌐 CORS: libera APENAS o front estático do Render
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://ai-impact-on-job-market-2024-2030-front.onrender.com",
+    ],
+    allow_credentials=False,   # não usamos cookies/autenticação
+    allow_methods=["*"],       # permite POST, OPTIONS etc.
+    allow_headers=["*"],
+)
+
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "model.joblib")
 model = joblib.load(MODEL_PATH)
 
-origins = [
-    #"http://localhost:8000",         # para testes locais (ajuste se usar outra porta)
-    "https://ai-impact-on-job-market-2024-2030-front.onrender.com" # troque pela URL do front-end no Render
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins= origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 # Mapas PT -> EN
 industry_map_pt_en = {
